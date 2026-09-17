@@ -78,24 +78,9 @@
     }
 
     .hero {
-      /* Gradasi dari warna Biru ke Putih */
-      background: linear-gradient(135deg, #0757b8 0%, #3a86ff 45%, #ffffff 100%);
+      /* Background dikembalikan ke gradasi awal */
+      background: linear-gradient(135deg, #ffffff 0%, #edf6ff 55%, #dceeff 100%);
       padding: 90px 20px 85px;
-    }
-
-    /* Menyesuaikan warna teks agar kontras dengan gradasi biru-putih */
-    .hero h1 {
-      color: #ffffff;
-    }
-
-    .hero p {
-      color: #eaf4ff;
-    }
-
-    .hero .badge {
-      color: var(--dark-blue);
-      background: #ffffff;
-      border: 1px solid #ffffff;
     }
 
     .hero-inner {
@@ -109,6 +94,9 @@
 
     .badge {
       display: inline-block;
+      color: var(--blue);
+      background: #dff0ff;
+      border: 1px solid #c6e4ff;
       padding: 7px 13px;
       border-radius: 999px;
       font-weight: 800;
@@ -126,39 +114,39 @@
     .hero p {
       max-width: 650px;
       font-size: 18px;
+      color: #526f8e;
       margin-bottom: 28px;
     }
 
     .btn {
       display: inline-block;
       text-decoration: none;
-      background: var(--dark-blue);
+      background: var(--blue);
       color: white;
       padding: 12px 20px;
       border-radius: 9px;
       font-weight: 800;
       margin-right: 8px;
-      box-shadow: 0 7px 18px rgba(0,0,0,.15);
+      box-shadow: 0 7px 18px rgba(7,87,184,.2);
     }
 
-    .btn:hover { background: #04254f; }
-    
+    .btn:hover { background: var(--dark-blue); }
     .btn-outline {
-      background: transparent;
-      color: white;
-      border: 2px solid #ffffff;
+      background: white;
+      color: var(--blue);
+      border: 1px solid #b8d7f4;
       box-shadow: none;
     }
     .btn-outline:hover {
-      background: rgba(255, 255, 255, 0.2);
+      background: var(--light-blue);
     }
 
     .hero-card {
-      background: rgba(255, 255, 255, 0.95);
+      background: white;
       border: 1px solid var(--border);
       border-radius: 20px;
       padding: 32px;
-      box-shadow: 0 18px 45px rgba(0,0,0,.12);
+      box-shadow: 0 18px 45px rgba(0,60,120,.10);
       text-align: center;
     }
 
@@ -314,7 +302,7 @@
         <div class="hero-card">
           <div class="hero-icon">🏍️</div>
           <h2>Motor Siap Jalan</h2>
-          <p style="color: var(--muted);">Perawatan rutin membantu menjaga performa dan kenyamanan kendaraan.</p>
+          <p>Perawatan rutin membantu menjaga performa dan kenyamanan kendaraan.</p>
         </div>
       </div>
     </section>
@@ -369,28 +357,28 @@
             <div class="service-icon">🔧</div>
             <h3>Service Motor</h3>
             <p>Service berkala, pemeriksaan kendaraan, tune up, dan perbaikan berbagai komponen motor.</p>
-            <a class="btn" href="service.html" style="margin-top:18px; background:var(--blue);">Lihat Jasa Service →</a>
+            <a class="btn" href="service.html" style="margin-top:18px;">Lihat Jasa Service →</a>
           </div>
 
           <div class="service-card">
             <div class="service-icon">🛢️</div>
             <h3>Oli</h3>
             <p>Menyediakan berbagai pilihan oli mesin untuk membantu menjaga performa dan perlindungan mesin.</p>
-            <a class="btn" href="oli.html" style="margin-top:18px; background:var(--blue);">Lihat Harga Oli →</a>
+            <a class="btn" href="oli.html" style="margin-top:18px;">Lihat Harga Oli →</a>
           </div>
 
           <div class="service-card">
             <div class="service-icon">⚙️</div>
             <h3>Sparepart</h3>
             <p>Kebutuhan sparepart dan komponen motor untuk perawatan maupun penggantian part.</p>
-            <a class="btn" href="Sparepart.html" style="margin-top:18px; background:var(--blue);">Lihat Harga Spare part →</a>
+            <a class="btn" href="Sparepart.html" style="margin-top:18px;">Lihat Harga Spare part →</a>
           </div>
 
           <div class="service-card">
             <div class="service-icon">🛞</div>
             <h3>Ban</h3>
             <p>Pilihan ban motor untuk kebutuhan berkendara harian, lengkap dengan layanan pemasangan.</p>
-            <a class="btn" href="ban.html" style="margin-top:18px; background:var(--blue);">Lihat Harga Ban →</a>
+            <a class="btn" href="ban.html" style="margin-top:18px;">Lihat Harga Ban →</a>
           </div>
 
           <div class="service-card">
@@ -428,7 +416,7 @@
             <p style="color:#66809d; margin-bottom:18px;">
               Untuk konsultasi atau menanyakan layanan, Anda dapat menghubungi kami melalui WhatsApp.
             </p>
-            <a class="btn" href="https://wa.me/62859106645833" target="_blank" style="background:var(--blue);">Chat WhatsApp</a>
+            <a class="btn" href="https://wa.me/62859106645833" target="_blank">Chat WhatsApp</a>
           </div>
         </div>
       </div>
