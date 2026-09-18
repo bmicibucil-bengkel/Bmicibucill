@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daftar Harga Ban</title>
+<style>
+:root { --blue:#0d6efd; --dark:#083b78; --light:#f2f7ff; }
+* { box-sizing:border-box; }
+body { margin:0; font-family:Arial,Helvetica,sans-serif; background:var(--light); color:#17324d; }
+header { background: linear-gradient(rgba(6, 59, 122, 0.75), rgba(6, 59, 122, 0.75)), url('IMG-20260911-WA0010.jpg');
+            background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      padding: 90px 20px 85px;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);}
+.wrap { max-width:1000px; margin:auto; }
+h1 { margin:0 0 6px; font-size:28px; }
+.sub { opacity:.9; }
+.search { margin-top:20px; position:relative; }
+.search input { width:100%; padding:15px 18px 15px 48px; border:0; border-radius:12px; font-size:16px; outline:none; box-shadow:0 3px 12px #0002; }
+.search span { position:absolute; left:17px; top:13px; font-size:21px; }
+main { padding:22px 16px 40px; }
+.toolbar { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; font-size:14px; color:#5b7188; }
+.list { max-height: 380px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;}
+.list::-webkit-scrollbar-thumb {
+            background: linear-gradient(90deg, #0757b8 0%, #3f8fe0 48%, #ffffff 100%);
+            border-radius: 10px;
+        }
+.list::-webkit-scrollbar-track {
+            background: linear-gradient(90deg, #0757b8 0%, #3f8fe0 48%, #ffffff 100%);
+        }
+.item { display:flex; justify-content:space-between; gap:20px; align-items:center; padding:15px 18px; border-bottom:1px solid #e8eef6; }
+.item:last-child { border-bottom:0; }
+.item:hover { background:#ffffff; }
+.name { font-weight:700; color:#173b61; }
+.type { font-size:11px; color:#6c8aaa; margin-top:4px; letter-spacing:.4px; }
+.price { white-space:nowrap; font-weight:800; color:#0866d8; font-size:16px; }
+.empty { padding:35px; text-align:center; color:#71849a; display:none; }
+@media(max-width:600px) { h1{font-size:23px} .item{align-items:flex-start;padding:14px} .name{font-size:14px;line-height:1.4} .price{font-size:14px} }
+.back{display:block;text-align:center;text-decoration:none;background:#fff;color:#0066cc;padding:12px;border-radius:10px;font-weight:bold}
+
+</style>
+</head>
+<body>
+<header>
+<div class="wrap">
+<h1>Daftar Harga Ban</h1>
+<div class="sub">Katalog ban motor • 90 produk</div>
+<div class="search"><span>🔎</span><input id="search" type="search" placeholder="Cari merek, tipe, atau ukuran ban..." autocomplete="off"></div>
+</div>
+</header>
+<main class="wrap">
+<div class="toolbar"><span id="count">90 produk</span><span>Klik pencarian untuk memfilter</span></div>
+<div class="list" id="list"><div class="item" data-name="ascendo mt405 80/90-14 tubeless">
+      <div><div class="name">ASCENDO MT405 80/90-14 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 250.000</div>
+    </div>
+<div class="item" data-name="ascendo mt405 90/90-14 tubeless">
+      <div><div class="name">ASCENDO MT405 90/90-14 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 295.000</div>
+    </div>
+<div class="item" data-name="fdr blaze rs 120/65-17 tubeless">
+      <div><div class="name">FDR BLAZE RS 120/65-17 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 830.000</div>
+    </div>
+<div class="item" data-name="fdr city go 100/90-12 tubeless">
+      <div><div class="name">FDR CITY GO 100/90-12 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 318.000</div>
+    </div>
+<div class="item" data-name="fdr city go 110/90-12 tubeless">
+      <div><div class="name">FDR CITY GO 110/90-12 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 369.000</div>
+    </div>
+<div class="item" data-name="fdr flemino 100/90-14 tubeless">
+      <div><div class="name">FDR FLEMINO 100/90-14 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 366.000</div>
+    </div>
+<div class="item" data-name="fdr flemino 80/90-14 tubeless">
+      <div><div class="name">FDR FLEMINO 80/90-14 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 291.000</div>
+    </div>
+<div class="item" data-name="fdr flemino 90/90-14 tubeless">
+      <div><div class="name">FDR FLEMINO 90/90-14 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 329.000</div>
+    </div>
+<div class="item" data-name="fdr flemmo 70/90-14 tt">
+      <div><div class="name">FDR FLEMMO 70/90-14 TT</div><div class="type">TUBE TYPE</div></div>
+      <div class="price">Rp 191.000</div>
+    </div>
+<div class="item" data-name="fdr flemmo 70/90-17 tt">
+      <div><div class="name">FDR FLEMMO 70/90-17 TT</div><div class="type">TUBE TYPE</div></div>
+      <div class="price">Rp 228.000</div>
+    </div>
+<div class="item" data-name="fdr flemmo 80/90-14 tubeless">
+      <div><div class="name">FDR FLEMMO 80/90-14 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 291.000</div>
+    </div>
+<div class="item" data-name="fdr flemmo 90/90-14 tubeless">
+      <div><div class="name">FDR FLEMMO 90/90-14 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 329.000</div>
+    </div>
+<div class="item" data-name="fdr flemmo pro 70/90 - 17 tubeless">
+      <div><div class="name">FDR FLEMMO PRO 70/90 - 17 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 261.000</div>
+    </div>
+<div class="item" data-name="fdr flemmo pro 80/90 - 17 tubeless">
+      <div><div class="name">FDR FLEMMO PRO 80/90 - 17 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 314.000</div>
+    </div>
+<div class="item" data-name="fdr genzi pro 100/80-14 tubeless">
+      <div><div class="name">FDR GENZI PRO 100/80-14 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 374.000</div>
+    </div>
+<div class="item" data-name="fdr genzi pro 100/80-17 tubeless">
+      <div><div class="name">FDR GENZI PRO 100/80-17 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 448.000</div>
+    </div>
+<div class="item" data-name="fdr genzi pro 70/80-17 tubeless">
+      <div><div class="name">FDR GENZI PRO 70/80-17 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 272.000</div>
+    </div>
+<div class="item" data-name="fdr genzi pro 80/80-14 tubeless">
+      <div><div class="name">FDR GENZI PRO 80/80-14 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 270.000</div>
+    </div>
+<div class="item" data-name="fdr genzi pro 80/80-17 tubeless">
+      <div><div class="name">FDR GENZI PRO 80/80-17 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 316.000</div>
+    </div>
+<div class="item" data-name="fdr genzi pro 90/80-14 tubeless">
+      <div><div class="name">FDR GENZI PRO 90/80-14 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 327.000</div>
+    </div>
+<div class="item" data-name="fdr genzi pro 90/80-17 tubeless">
+      <div><div class="name">FDR GENZI PRO 90/80-17 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 382.000</div>
+    </div>
+<div class="item" data-name="fdr sport xr evo 110/70-13 tubeless">
+      <div><div class="name">FDR SPORT XR EVO 110/70-13 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 373.000</div>
+    </div>
+<div class="item" data-name="fdr sport xr evo 130/70-13 tubeless">
+      <div><div class="name">FDR SPORT XR EVO 130/70-13 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 469.000</div>
+    </div>
+<div class="item" data-name="fdr sport zevo 110/70 - 12 tubeless">
+      <div><div class="name">FDR SPORT ZEVO 110/70 - 12 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 436.000</div>
+    </div>
+<div class="item" data-name="fdr sport zevo 120/70-13 tubeless">
+      <div><div class="name">FDR SPORT ZEVO 120/70-13 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 393.000</div>
+    </div>
+<div class="item" data-name="fdr velogrip 110/90-12 tubeless">
+      <div><div class="name">FDR VELOGRIP 110/90-12 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 425.000</div>
+    </div>
+<div class="item" data-name="golden crown dmd 80/90-14 tubeless">
+      <div><div class="name">GOLDEN CROWN DMD 80/90-14 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 255.000</div>
+    </div>
+<div class="item" data-name="golden crown dmd 90/90-14 tubeless">
+      <div><div class="name">GOLDEN CROWN DMD 90/90-14 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 290.000</div>
+    </div>
+<div class="item" data-name="irc ecotrax nr96 70/90-14 tubeless">
+      <div><div class="name">IRC ECOTRAX NR96 70/90-14 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 228.000</div>
+    </div>
+<div class="item" data-name="irc ecotrax nr96 70/90-17 tubeless">
+      <div><div class="name">IRC ECOTRAX NR96 70/90-17 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 270.000</div>
+    </div>
+<div class="item" data-name="irc ecotrax nr96 80/90-14 tubeless">
+      <div><div class="name">IRC ECOTRAX NR96 80/90-14 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 295.000</div>
+    </div>
+<div class="item" data-name="irc ecotrax nr96 80/90-17 tubeless">
+      <div><div class="name">IRC ECOTRAX NR96 80/90-17 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 335.000</div>
+    </div>
+<div class="item" data-name="irc ecotrax nr96 90/90-14 tubeless">
+      <div><div class="name">IRC ECOTRAX NR96 90/90-14 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 330.000</div>
+    </div>
+<div class="item" data-name="irc exato nr88 110/70 - 17 tubeless">
+      <div><div class="name">IRC EXATO NR88 110/70 - 17 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 532.000</div>
+    </div>
+<div class="item" data-name="irc exato nr88 120/70 - 17 tubeless">
+      <div><div class="name">IRC EXATO NR88 120/70 - 17 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 565.000</div>
+    </div>
+<div class="item" data-name="irc exato nr88 130/70-13 tubeless">
+      <div><div class="name">IRC EXATO NR88 130/70-13 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 472.000</div>
+    </div>
+<div class="item" data-name="irc exato nr88 130/70-17 tubeless">
+      <div><div class="name">IRC EXATO NR88 130/70-17 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 695.000</div>
+    </div>
+<div class="item" data-name="irc mb67 110/90 - 12 tubeless">
+      <div><div class="name">IRC MB67 110/90 - 12 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 390.000</div>
+    </div>
+<div class="item" data-name="irc mb86 100/90 - 12 tubeless">
+      <div><div class="name">IRC MB86 100/90 - 12 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 325.000</div>
+    </div>
+<div class="item" data-name="irc nr72 90/90-17 tt">
+      <div><div class="name">IRC NR72 90/90-17 TT</div><div class="type">TUBE TYPE</div></div>
+      <div class="price">Rp 355.000</div>
+    </div>
+<div class="item" data-name="irc nr82 100/90 - 12 tubeless">
+      <div><div class="name">IRC NR82 100/90 - 12 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 325.000</div>
+    </div>
+<div class="item" data-name="irc nr83 110/90 - 12 tubeless">
+      <div><div class="name">IRC NR83 110/90 - 12 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 380.000</div>
+    </div>
+<div class="item" data-name="irc nr93 70/90 17 tubeless">
+      <div><div class="name">IRC NR93 70/90 17 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 270.000</div>
+    </div>
+<div class="item" data-name="irc rx-01 110/70 - 17 tubeless">
+      <div><div class="name">IRC RX-01 110/70 - 17 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 532.000</div>
+    </div>
+<div class="item" data-name="irc sct-004 100/90-14 tubeless">
+      <div><div class="name">IRC SCT-004 100/90-14 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 425.000</div>
+    </div>
+<div class="item" data-name="irc sct-005f 110/80 - 14 tubeless">
+      <div><div class="name">IRC SCT-005F 110/80 - 14 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 425.000</div>
+    </div>
+<div class="item" data-name="irc sct-005r 140/70 - 14 tubeless">
+      <div><div class="name">IRC SCT-005R 140/70 - 14 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 580.000</div>
+    </div>
+<div class="item" data-name="irc sct-006 100/80-14 tubeless">
+      <div><div class="name">IRC SCT-006 100/80-14 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 378.000</div>
+    </div>
+<div class="item" data-name="irc sct-006 110/70-14 tubeless">
+      <div><div class="name">IRC SCT-006 110/70-14 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 425.000</div>
+    </div>
+<div class="item" data-name="irc sct-007 120/70-14 tubeless">
+      <div><div class="name">IRC SCT-007 120/70-14 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 465.000</div>
+    </div>
+<div class="item" data-name="irc sct-007 130/70-13 tubeless">
+      <div><div class="name">IRC SCT-007 130/70-13 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 472.000</div>
+    </div>
+<div class="item" data-name="irc ss530 80/90-14 tubeless">
+      <div><div class="name">IRC SS530 80/90-14 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 300.000</div>
+    </div>
+<div class="item" data-name="irc ss530 90/90-14 tubeless">
+      <div><div class="name">IRC SS530 90/90-14 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 330.000</div>
+    </div>
+<div class="item" data-name="irc ss-560f 90/90-14 tubeless">
+      <div><div class="name">IRC SS-560F 90/90-14 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 335.000</div>
+    </div>
+<div class="item" data-name="irc ss-560r 130/70-13 tubeless">
+      <div><div class="name">IRC SS-560R 130/70-13 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 472.000</div>
+    </div>
+<div class="item" data-name="irc ss-570f 110/70-13 tubeless">
+      <div><div class="name">IRC SS-570F 110/70-13 TUBELESS</div><div class="type">TUBELESS</div></div>
+      <div class="price">Rp 375.000</div>
+    </div>
+<div class="item" data-name="maxxis victra 110/70-13 tl">
+      <div><div class="name">MAXXIS VICTRA 110/70-13 TL</div><div class="type">TL</div></div>
+      <div class="price">Rp 429.000</div>
+    </div>
+<div class="item" data-name="maxxis diamond ma-3di 100/80-14 tl">
+      <div><div class="name">MAXXIS DIAMOND MA-3Di 100/80-14 TL</div><div class="type">TL</div></div>
+      <div class="price">Rp 405.000</div>
+    </div>
+<div class="item" data-name="maxxis diamond ma-3di 70/90-14 tl">
+      <div><div class="name">MAXXIS DIAMOND MA-3Di 70/90-14 TL</div><div class="type">TL</div></div>
+      <div class="price">Rp 268.000</div>
+    </div>
+<div class="item" data-name="maxxis diamond ma-3di 80/80-14 tl">
+      <div><div class="name">MAXXIS DIAMOND MA-3Di 80/80-14 TL</div><div class="type">TL</div></div>
+      <div class="price">Rp 278.000</div>
+    </div>
+<div class="item" data-name="maxxis diamond ma-3di 80/90-14 tl">
+      <div><div class="name">MAXXIS DIAMOND MA-3Di 80/90-14 TL</div><div class="type">TL</div></div>
+      <div class="price">Rp 284.000</div>
+    </div>
+<div class="item" data-name="maxxis diamond ma-3di 90/90-14 tl">
+      <div><div class="name">MAXXIS DIAMOND MA-3Di 90/90-14 TL</div><div class="type">TL</div></div>
+      <div class="price">Rp 353.000</div>
+    </div>
+<div class="item" data-name="maxxis diamond ma-3dn 100/80-14 tl">
+      <div><div class="name">MAXXIS DIAMOND MA-3DN 100/80-14 TL</div><div class="type">TL</div></div>
+      <div class="price">Rp 399.000</div>
+    </div>
+<div class="item" data-name="maxxis diamond ma-3dn 70/90-14 tl">
+      <div><div class="name">MAXXIS DIAMOND MA-3DN 70/90-14 TL</div><div class="type">TL</div></div>
+      <div class="price">Rp 261.000</div>
+    </div>
+<div class="item" data-name="maxxis diamond ma-3dn 80/80-14 tl">
+      <div><div class="name">MAXXIS DIAMOND MA-3DN 80/80-14 TL</div><div class="type">TL</div></div>
+      <div class="price">Rp 272.000</div>
+    </div>
+<div class="item" data-name="maxxis extramaxx 110/70-17 tl">
+      <div><div class="name">MAXXIS EXTRAMAXX 110/70-17 TL</div><div class="type">TL</div></div>
+      <div class="price">Rp 620.000</div>
+    </div>
+<div class="item" data-name="maxxis extramaxx 140/70-17 tl">
+      <div><div class="name">MAXXIS EXTRAMAXX 140/70-17 TL</div><div class="type">TL</div></div>
+      <div class="price">Rp 883.000</div>
+    </div>
+<div class="item" data-name="maxxis extramaxx 80/90-14 tl">
+      <div><div class="name">MAXXIS EXTRAMAXX 80/90-14 TL</div><div class="type">TL</div></div>
+      <div class="price">Rp 305.000</div>
+    </div>
+<div class="item" data-name="maxxis green devil 100/80-14 tl">
+      <div><div class="name">MAXXIS GREEN DEVIL 100/80-14 TL</div><div class="type">TL</div></div>
+      <div class="price">Rp 442.000</div>
+    </div>
+<div class="item" data-name="maxxis green devil 80/80-14 tl">
+      <div><div class="name">MAXXIS GREEN DEVIL 80/80-14 TL</div><div class="type">TL</div></div>
+      <div class="price">Rp 306.000</div>
+    </div>
+<div class="item" data-name="maxxis m6029w 80/80-14 tl">
+      <div><div class="name">MAXXIS M6029W 80/80-14 TL</div><div class="type">TL</div></div>
+      <div class="price">Rp 253.000</div>
+    </div>
+<div class="item" data-name="maxxis m6211 70/90-16 tl">
+      <div><div class="name">MAXXIS M6211 70/90-16 TL</div><div class="type">TL</div></div>
+      <div class="price">Rp 284.000</div>
+    </div>
+<div class="item" data-name="maxxis m6212 90/80-16 tl">
+      <div><div class="name">MAXXIS M6212 90/80-16 TL</div><div class="type">TL</div></div>
+      <div class="price">Rp 355.000</div>
+    </div>
+<div class="item" data-name="maxxis m922 100/90-12 tl">
+      <div><div class="name">MAXXIS M922 100/90-12 TL</div><div class="type">TL</div></div>
+      <div class="price">Rp 315.000</div>
+    </div>
+<div class="item" data-name="maxxis m922 110/90-12 tl">
+      <div><div class="name">MAXXIS M922 110/90-12 TL</div><div class="type">TL</div></div>
+      <div class="price">Rp 381.000</div>
+    </div>
+<div class="item" data-name="maxxis victra 100/80-14 tl">
+      <div><div class="name">MAXXIS VICTRA 100/80-14 TL</div><div class="type">TL</div></div>
+      <div class="price">Rp 447.000</div>
+    </div>
+<div class="item" data-name="maxxis victra 100/90-14 tl">
+      <div><div class="name">MAXXIS VICTRA 100/90-14 TL</div><div class="type">TL</div></div>
+      <div class="price">Rp 479.000</div>
+    </div>
+<div class="item" data-name="maxxis victra 110/80-14 tl">
+      <div><div class="name">MAXXIS VICTRA 110/80-14 TL</div><div class="type">TL</div></div>
+      <div class="price">Rp 509.000</div>
+    </div>
+<div class="item" data-name="maxxis victra 120/70-13 tl">
+      <div><div class="name">MAXXIS VICTRA 120/70-13 TL</div><div class="type">TL</div></div>
+      <div class="price">Rp 466.000</div>
+    </div>
+<div class="item" data-name="maxxis victra 130/70-13 tl">
+      <div><div class="name">MAXXIS VICTRA 130/70-13 TL</div><div class="type">TL</div></div>
+      <div class="price">Rp 558.000</div>
+    </div>
+<div class="item" data-name="maxxis victra 140/70-13 tl">
+      <div><div class="name">MAXXIS VICTRA 140/70-13 TL</div><div class="type">TL</div></div>
+      <div class="price">Rp 594.000</div>
+    </div>
+<div class="item" data-name="maxxis victra 140/70-14 tl">
+      <div><div class="name">MAXXIS VICTRA 140/70-14 TL</div><div class="type">TL</div></div>
+      <div class="price">Rp 701.000</div>
+    </div>
+<div class="item" data-name="maxxis victra 49p st 90/80-14 tl">
+      <div><div class="name">MAXXIS VICTRA 49P ST 90/80-14 TL</div><div class="type">TL</div></div>
+      <div class="price">Rp 390.000</div>
+    </div>
+<div class="item" data-name="maxxis victra ct 100/90-12 tl">
+      <div><div class="name">MAXXIS VICTRA CT 100/90-12 TL</div><div class="type">TL</div></div>
+      <div class="price">Rp 357.000</div>
+    </div>
+<div class="item" data-name="maxxis victra ct 110/90-12 tl">
+      <div><div class="name">MAXXIS VICTRA CT 110/90-12 TL</div><div class="type">TL</div></div>
+      <div class="price">Rp 445.000</div>
+    </div>
+<div class="item" data-name="maxxis victra ct 130/80-12 tl">
+      <div><div class="name">MAXXIS VICTRA CT 130/80-12 TL</div><div class="type">TL</div></div>
+      <div class="price">Rp 498.000</div>
+    </div>
+<div class="item" data-name="maxxis victra st 70/90-14 tl">
+      <div><div class="name">MAXXIS VICTRA ST 70/90-14 TL</div><div class="type">TL</div></div>
+      <div class="price">Rp 273.000</div>
+    </div>
+<div class="item" data-name="maxxis victra st 80/90-14 tl">
+      <div><div class="name">MAXXIS VICTRA ST 80/90-14 TL</div><div class="type">TL</div></div>
+      <div class="price">Rp 340.000</div>
+    </div>
+<div class="item" data-name="maxxis victra st 90/90-14 tl">
+      <div><div class="name">MAXXIS VICTRA ST 90/90-14 TL</div><div class="type">TL</div></div>
+      <div class="price">Rp 417.000</div>
+    </div>
+<div class="item" data-name="maxxis volans 80/80-17 tl">
+      <div><div class="name">MAXXIS VOLANS 80/80-17 TL</div><div class="type">TL</div></div>
+      <div class="price">Rp 337.000</div>
+    </div><div class="empty" id="empty">Produk tidak ditemukan.</div></div>
+    <a class="back" href="index.html">← Kembali</a>
+</main>
+<script>
+const input=document.getElementById('search'), cards=[...document.querySelectorAll('.item')], count=document.getElementById('count'), empty=document.getElementById('empty');
+input.addEventListener('input',()=>{
+ const q=input.value.toLowerCase().trim(); let n=0;
+ cards.forEach(c=>{const ok=c.dataset.name.includes(q); c.style.display=ok?'flex':'none'; if(ok)n++;});
+ count.textContent=n+' produk'; empty.style.display=n?'none':'block';
+});
+</script>
+</body>
+</html>
