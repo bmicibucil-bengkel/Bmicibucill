@@ -374,7 +374,7 @@
       border-radius: 20px;
       border: 1px solid rgba(255,255,255,.45);
       box-shadow: 0 14px 35px rgba(0,35,80,.25);
-      background: #fffff;
+      background: #ffffff;
     }
     .promo-track {
       display: flex;
@@ -436,7 +436,7 @@
     .promo-btn {
       display:inline-block;
       text-decoration:none;
-      background:#ffd51c;
+      background: transparent;
       color:#17385f;
       padding:8px 14px;
       border-radius:999px;
@@ -561,6 +561,149 @@
       .promo-btn { padding:7px 11px; font-size:10px; }
     }
 
+
+    /* ===== ADMIN PROMO ===== */
+    .admin-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      margin-top: 9px;
+      min-width: 42px;
+      height: 30px;
+      padding: 0 9px;
+      color: rgba(255,255,255,.75);
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.18);
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 900;
+      line-height: 1;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: .2s;
+    }
+    .admin-link:hover,
+    .admin-link:focus-visible {
+      color: #fff;
+      background: rgba(255,255,255,.18);
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .promo-admin-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 5000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      background: rgba(0,20,45,.72);
+      backdrop-filter: blur(4px);
+    }
+    .promo-admin-modal.open { display: flex; }
+    .promo-admin-box {
+      width: min(760px, 100%);
+      max-height: 92vh;
+      overflow: auto;
+      background: #fff;
+      color: var(--text);
+      border-radius: 18px;
+      box-shadow: 0 25px 70px rgba(0,0,0,.3);
+      padding: 22px;
+    }
+    .promo-admin-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .promo-admin-head h3 { color: var(--dark-blue); }
+    .promo-admin-close {
+      border: 0;
+      background: #eef6ff;
+      color: var(--blue);
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      font-size: 22px;
+      cursor: pointer;
+    }
+    .promo-admin-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .promo-admin-field { display: flex; flex-direction: column; gap: 5px; }
+    .promo-admin-field.full { grid-column: 1 / -1; }
+    .promo-admin-field label { font-size: 12px; font-weight: 800; color: #365878; }
+    .promo-admin-field input,
+    .promo-admin-field textarea,
+    .promo-admin-field select {
+      width: 100%;
+      border: 1px solid #cfe0ef;
+      border-radius: 9px;
+      padding: 10px 11px;
+      font: inherit;
+      outline: none;
+    }
+    .promo-admin-field input:focus,
+    .promo-admin-field textarea:focus,
+    .promo-admin-field select:focus { border-color: var(--blue); }
+    .promo-admin-field textarea { min-height: 80px; resize: vertical; }
+    .promo-preview {
+      margin-top: 12px;
+      border: 1px dashed #b8d1e9;
+      border-radius: 12px;
+      padding: 10px;
+      background: #f7fbff;
+    }
+    .promo-preview img {
+      display: block;
+      width: 100%;
+      max-height: 190px;
+      object-fit: contain;
+      border-radius: 9px;
+      background: #edf5fc;
+    }
+    .promo-admin-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+    .promo-admin-actions button {
+      border: 0;
+      border-radius: 9px;
+      padding: 10px 14px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .promo-save { background: var(--blue); color: #fff; }
+    .promo-delete { background: #fff0f0; color: #b42318; }
+    .promo-reset { background: #eef5fb; color: #315777; }
+    .promo-admin-note { margin-top: 9px; color: #6a8198; font-size: 12px; }
+    .pin-screen { text-align: center; max-width: 390px; }
+    .pin-screen input {
+      width: 100%;
+      margin: 12px 0;
+      padding: 12px;
+      text-align: center;
+      letter-spacing: 7px;
+      font-size: 20px;
+      border: 1px solid #cfe0ef;
+      border-radius: 10px;
+    }
+    .pin-error { color: #b42318; min-height: 20px; font-size: 12px; }
+
+    @media (max-width: 600px) {
+      .promo-admin-grid { grid-template-columns: 1fr; }
+      .promo-admin-field.full { grid-column: auto; }
+      .promo-admin-box { padding: 17px; }
+    }
+
   </style>
 </head>
 
@@ -634,6 +777,32 @@
                   <img src="IMG-20260911-WA0010.jpg" alt="Promo cek motor">
                 </div>
               </article>
+
+              <article class="promo-slide">
+                <div class="promo-copy">
+                  <span class="promo-label">🏍️ PROMO BMI</span>
+                  <h2>PROMO SPAREPART</h2>
+                  <div class="promo-price"><strong>HEMAT</strong></div>
+                  <p>Lihat promo sparepart terbaru BMI CIBUCIL</p>
+                  <a class="promo-btn" href="#kontak">Lihat Promo →</a>
+                </div>
+                <div class="promo-photo">
+                  <img src="IMG-20260911-WA0010.jpg" alt="Promo sparepart">
+                </div>
+              </article>
+
+              <article class="promo-slide">
+                <div class="promo-copy">
+                  <span class="promo-label">🏍️ PROMO BMI</span>
+                  <h2>PROMO BAN</h2>
+                  <div class="promo-price"><strong>SPESIAL</strong></div>
+                  <p>Temukan pilihan ban motor untuk kebutuhan Anda</p>
+                  <a class="promo-btn" href="#kontak">Tanya Sekarang →</a>
+                </div>
+                <div class="promo-photo">
+                  <img src="ban-promo.jpg" alt="Promo ban">
+                </div>
+              </article>
             </div>
 
             <button class="promo-arrow promo-prev" type="button" aria-label="Promo sebelumnya">‹</button>
@@ -643,6 +812,8 @@
               <button class="promo-dot active" type="button" aria-label="Promo 1"></button>
               <button class="promo-dot" type="button" aria-label="Promo 2"></button>
               <button class="promo-dot" type="button" aria-label="Promo 3"></button>
+              <button class="promo-dot" type="button" aria-label="Promo 4"></button>
+              <button class="promo-dot" type="button" aria-label="Promo 5"></button>
             </div>
           </div>
           
@@ -778,8 +949,90 @@
   <footer>
     <p>&copy; 2026 BMI CIBUCIL. Semua hak dilindungi.</p>
     <p>Service Motor • Oli • Sparepart • Ban</p>
-    <a class="admin-link" href="admin.html" aria-label="Admin">•</a>
+    <p style="font-size:11px;opacity:.65;"></p>
+    <button class="admin-link" id="openPromoAdmin" type="button" aria-label="Kelola promo" title="Kelola promo"></button>
   </footer>
+
+
+  <!-- ===== FORM ISI PROMO SLIDING ===== -->
+  <div class="promo-admin-modal" id="pinModal" aria-hidden="true">
+    <div class="promo-admin-box pin-screen">
+      <div class="promo-admin-head">
+        <h3>🔐 PIN Admin Promo</h3>
+        <button class="promo-admin-close" type="button" id="closePin">×</button>
+      </div>
+      <p>Masukkan PIN untuk mengubah promo sliding.</p>
+      <input id="adminPin" type="password" inputmode="numeric" maxlength="6" placeholder="••••" aria-label="PIN admin">
+      <div class="pin-error" id="pinError"></div>
+      <button class="btn" type="button" id="checkPin">Buka Pengaturan Promo</button>
+      <p class="promo-admin-note"> <strong></strong>..</p>
+    </div>
+  </div>
+
+  <div class="promo-admin-modal" id="promoAdminModal" aria-hidden="true">
+    <div class="promo-admin-box">
+      <div class="promo-admin-head">
+        <div>
+          <h3>⚙️ Kelola Promo Sliding</h3>
+          <p class="promo-admin-note">Maksimal 5 promo/slide. Pilih slide, isi gambar dan keterangan, lalu simpan.</p>
+        </div>
+        <button class="promo-admin-close" type="button" id="closePromoAdmin">×</button>
+      </div>
+
+      <div class="promo-admin-grid">
+        <div class="promo-admin-field">
+          <label for="promoSelect">Pilih Promo</label>
+          <select id="promoSelect">
+            <option value="0">Promo 1</option>
+            <option value="1">Promo 2</option>
+            <option value="2">Promo 3</option>
+            <option value="3">Promo 4</option>
+            <option value="4">Promo 5</option>
+          </select>
+        </div>
+
+        <div class="promo-admin-field">
+          <label for="promoLabel">Label</label>
+          <input id="promoLabel" type="text" placeholder="🏍️ PROMO BMI">
+        </div>
+
+        <div class="promo-admin-field full">
+          <label for="promoTitle">Judul Promo</label>
+          <input id="promoTitle" type="text" placeholder="Contoh: GANTI OLI">
+        </div>
+
+        <div class="promo-admin-field">
+          <label for="promoPrice">Harga / Penawaran</label>
+          <input id="promoPrice" type="text" placeholder="Rp 50.000">
+        </div>
+
+        <div class="promo-admin-field">
+          <label for="promoButton">Teks Tombol</label>
+          <input id="promoButton" type="text" placeholder="Ambil Promo →">
+        </div>
+
+        <div class="promo-admin-field full">
+          <label for="promoDesc">Keterangan</label>
+          <textarea id="promoDesc" placeholder="Tulis keterangan promo di sini..."></textarea>
+        </div>
+
+        <div class="promo-admin-field full">
+          <label for="promoImage">Input Gambar Promo</label>
+          <input id="promoImage" type="file" accept="image/*">
+          <div class="promo-admin-note">Gambar akan disimpan di browser perangkat ini menggunakan localStorage. Gunakan gambar yang ukurannya tidak terlalu besar.</div>
+          <div class="promo-preview">
+            <img id="promoPreview" alt="Preview gambar promo">
+          </div>
+        </div>
+      </div>
+
+      <div class="promo-admin-actions">
+        <button class="promo-save" type="button" id="savePromo">💾 Simpan Promo</button>
+        <button class="promo-delete" type="button" id="deletePromo">🗑️ Hapus Promo</button>
+        <button class="promo-reset" type="button" id="resetPromo">↩️ Kembalikan Default</button>
+      </div>
+    </div>
+  </div>
 
   <script>
     (() => {
@@ -793,6 +1046,84 @@
       const next = slider.querySelector('.promo-next');
 
       let index = 0, timer, startX = 0;
+
+      const defaultPromos = [
+        {
+          label: '',
+          title: '',
+          price: '',
+          desc: '',
+          button: 'Tanyakan Sekarang Juga',
+          image: 'promo-oli.jpg'
+        },
+        {
+          label: '',
+          title: '',
+          price: '',
+          desc: '',
+          button: 'Ambil Promo →',
+          image: 'ban-promo.jpg'
+        },
+        {
+          label: '🏍️ PROMO BMI',
+          title: 'CEK MOTOR',
+          price: 'GRATIS',
+          desc: 'Cek kondisi kendaraan sebelum service',
+          button: 'Cek Sekarang →',
+          image: 'IMG-20260911-WA0010.jpg'
+        },
+        {
+          label: '🏍️ PROMO BMI',
+          title: 'PROMO SPAREPART',
+          price: 'HEMAT',
+          desc: 'Lihat promo sparepart terbaru BMI CIBUCIL',
+          button: 'Lihat Promo →',
+          image: 'IMG-20260911-WA0010.jpg'
+        },
+        {
+          label: '🏍️ PROMO BMI',
+          title: 'PROMO BAN',
+          price: 'SPESIAL',
+          desc: 'Temukan pilihan ban motor untuk kebutuhan Anda',
+          button: 'Tanya Sekarang →',
+          image: 'ban-promo.jpg'
+        }
+      ];
+
+      function getPromos() {
+        try {
+          const saved = JSON.parse(localStorage.getItem('bmi_cibucil_promos'));
+          return Array.isArray(saved) && saved.length === 5 ? saved : structuredClone(defaultPromos);
+        } catch (e) {
+          return structuredClone(defaultPromos);
+        }
+      }
+
+      function savePromos(promos) {
+        localStorage.setItem('bmi_cibucil_promos', JSON.stringify(promos));
+      }
+
+      function applyPromos() {
+        const promos = getPromos();
+        slides.forEach((slide, i) => {
+          const p = promos[i] || defaultPromos[i];
+          const label = slide.querySelector('.promo-label');
+          const title = slide.querySelector('h2');
+          const price = slide.querySelector('.promo-price strong');
+          const desc = slide.querySelector('.promo-copy p');
+          const btn = slide.querySelector('.promo-btn');
+          const img = slide.querySelector('.promo-photo img');
+
+          label.textContent = p.label || '';
+          title.textContent = p.title || '';
+          price.textContent = p.price || '';
+          desc.textContent = p.desc || '';
+          btn.textContent = p.button || 'Tanyakan Sekarang →';
+          img.src = p.image || '';
+          img.alt = p.title ? `Promo ${p.title}` : `Promo BMI CIBUCIL ${i + 1}`;
+          slide.style.backgroundImage = p.image ? `url("${p.image}")` : 'none';
+        });
+      }
 
       function showSlide(i) {
         index = (i + slides.length) % slides.length;
@@ -825,10 +1156,149 @@
       slider.addEventListener('mouseenter', () => clearInterval(timer));
       slider.addEventListener('mouseleave', restartAutoSlide);
 
+      /* ===== FORM ADMIN PROMO ===== */
+      const openBtn = document.getElementById('openPromoAdmin');
+      const pinModal = document.getElementById('pinModal');
+      const promoModal = document.getElementById('promoAdminModal');
+      const pinInput = document.getElementById('adminPin');
+      const pinError = document.getElementById('pinError');
+      const promoSelect = document.getElementById('promoSelect');
+      const imageInput = document.getElementById('promoImage');
+      const preview = document.getElementById('promoPreview');
+
+      const fields = {
+        label: document.getElementById('promoLabel'),
+        title: document.getElementById('promoTitle'),
+        price: document.getElementById('promoPrice'),
+        desc: document.getElementById('promoDesc'),
+        button: document.getElementById('promoButton')
+      };
+
+      function openModal(modal) {
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+      }
+
+      function closeModal(modal) {
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden', 'true');
+      }
+
+      function loadForm(i) {
+        const p = getPromos()[i] || defaultPromos[i];
+        Object.keys(fields).forEach(k => fields[k].value = p[k] || '');
+        preview.src = p.image || '';
+      }
+
+      openBtn?.addEventListener('click', () => {
+        pinInput.value = '';
+        pinError.textContent = '';
+        openModal(pinModal);
+        setTimeout(() => pinInput.focus(), 80);
+      });
+
+      document.getElementById('closePin')?.addEventListener('click', () => closeModal(pinModal));
+      document.getElementById('closePromoAdmin')?.addEventListener('click', () => closeModal(promoModal));
+
+      document.getElementById('checkPin')?.addEventListener('click', () => {
+        if (pinInput.value === '223445') {
+          closeModal(pinModal);
+          loadForm(Number(promoSelect.value));
+          openModal(promoModal);
+        } else {
+          pinError.textContent = 'PIN salah. Silakan coba lagi.';
+          pinInput.select();
+        }
+      });
+
+      pinInput?.addEventListener('keydown', e => {
+        if (e.key === 'Enter') document.getElementById('checkPin').click();
+      });
+
+      promoSelect?.addEventListener('change', () => {
+        loadForm(Number(promoSelect.value));
+        imageInput.value = '';
+      });
+
+      imageInput?.addEventListener('change', () => {
+        const file = imageInput.files?.[0];
+        if (!file) return;
+        if (!file.type.startsWith('image/')) {
+          alert('Pilih file gambar.');
+          imageInput.value = '';
+          return;
+        }
+        const reader = new FileReader();
+        reader.onload = e => preview.src = e.target.result;
+        reader.readAsDataURL(file);
+      });
+
+      document.getElementById('savePromo')?.addEventListener('click', () => {
+        const i = Number(promoSelect.value);
+        const promos = getPromos();
+        while (promos.length < 5) promos.push(structuredClone(defaultPromos[promos.length]));
+        const currentImage = preview.src || promos[i].image || defaultPromos[i].image;
+
+        promos[i] = {
+          label: fields.label.value.trim(),
+          title: fields.title.value.trim(),
+          price: fields.price.value.trim(),
+          desc: fields.desc.value.trim(),
+          button: fields.button.value.trim(),
+          image: currentImage
+        };
+
+        try {
+          savePromos(promos);
+          applyPromos();
+          alert('Promo berhasil disimpan.');
+        } catch (e) {
+          alert('Gagal menyimpan. Ukuran gambar mungkin terlalu besar untuk penyimpanan browser.');
+        }
+      });
+
+      document.getElementById('deletePromo')?.addEventListener('click', () => {
+        const i = Number(promoSelect.value);
+        if (!confirm(`Hapus isi Promo ${i + 1}?`)) return;
+
+        const promos = getPromos();
+        promos[i] = { label:'', title:'', price:'', desc:'', button:'', image:'' };
+        savePromos(promos);
+        applyPromos();
+        loadForm(i);
+        imageInput.value = '';
+      });
+
+      document.getElementById('resetPromo')?.addEventListener('click', () => {
+        const i = Number(promoSelect.value);
+        if (!confirm(`Kembalikan Promo ${i + 1} ke bawaan awal?`)) return;
+
+        const promos = getPromos();
+        promos[i] = structuredClone(defaultPromos[i]);
+        savePromos(promos);
+        applyPromos();
+        loadForm(i);
+        imageInput.value = '';
+      });
+
+      [pinModal, promoModal].forEach(modal => {
+        modal.addEventListener('click', e => {
+          if (e.target === modal) closeModal(modal);
+        });
+      });
+
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') {
+          closeModal(pinModal);
+          closeModal(promoModal);
+        }
+      });
+
+      applyPromos();
       showSlide(0);
       restartAutoSlide();
     })();
-  </script>
+    </script>
 
 </body>
 </html>
