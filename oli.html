@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="id">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Oli Motor</title><style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
+body{background:linear-gradient(135deg,#dff3ff,#a8d8ff);color:#1a1a1a}
+.header{background:linear-gradient(rgba(6,59,122,.78),rgba(6,59,122,.78)),url('IMG-20260911-WA0010.jpg');background-size:cover;background-position:center;padding:55px 20px;color:#fff;text-align:center}
+.header h1{font-size:24px}
+.admin-btn{position:fixed;top:12px;right:12px;width:38px;height:38px;border:0;border-radius:50%;
+background: transparent;
+  border: none;
+  color: white;
+}
+.admin-panel{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:2000;
+align-items:center;justify-content:center;padding:20px}
+.admin-box{width:min(500px,100%);background:#fff;border-radius:14px;padding:20px;box-shadow:0 8px 30px rgba(0,0,0,.3)}
+.admin-box h2{margin-bottom:15px;color:#063b7a}.admin-box input{width:100%;padding:12px;margin:7px 0;
+border:1px solid #ccc;border-radius:8px}.admin-actions{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.admin-actions button{padding:10px 14px;border:0;border-radius:8px;cursor:pointer;font-weight:bold}
+.btn-save{background:#0066cc;color:#fff}.btn-close{background:#eee}.btn-danger{background:#d33;color:#fff}
+.admin-list{margin-top:15px;max-height:220px;overflow:auto}.admin-row{display:flex;gap:8px;align-items:center;
+justify-content:space-between;padding:9px 0;border-bottom:1px solid #eee}.admin-row button{padding:6px 9px;border:0;border-radius:6px;cursor:pointer}.container{max-width:600px;margin:25px auto;padding:0 15px}
+.search-box{margin-bottom:20px}.search-box input{width:100%;padding:14px 16px;border:1px solid #ccc;border-radius:10px;font-size:16px;outline:none;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.category{background:#fff;border-radius:12px;margin-bottom:20px;overflow:hidden;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+.category-title{background:#0066cc;color:#fff;padding:15px;font-size:18px;font-weight:bold}
+.item-list{max-height:420px;overflow-y:auto}.item{padding:16px;border-bottom:1px solid #e5e5e5;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.name{font-size:15px;font-weight:600;line-height:1.4}.desc{font-size:12px;color:#666;margin-top:4px}.price{color:#0066cc;font-weight:bold;white-space:nowrap}
+.back{display:block;text-align:center;text-decoration:none;background:#fff;color:#0066cc;padding:12px;border-radius:10px;font-weight:bold}
+</style></head>
+<body>
+<header class="header"><h1>DAFTAR OLI MOTOR</h1></header>
+<button class="admin-btn" title="Admin" onclick="bukaAdmin()"></button>
+<div id="adminPanel" class="admin-panel">
+  <div class="admin-box">
+    <h2>Admin Barang</h2>
+    <div id="loginBox">
+      <p>Masukkan PIN untuk membuka form admin.</p>
+      <input id="pinInput" type="password" inputmode="numeric" maxlength="8" placeholder="PIN admin">
+      <div class="admin-actions">
+        <button class="btn-save" onclick="loginAdmin()">Masuk</button>
+        <button class="btn-close" onclick="tutupAdmin()">Batal</button>
+      </div>
+    </div>
+    <div id="formBox" style="display:none">
+      <input id="namaBarang" placeholder="Nama barang">
+      <input id="descBarang" placeholder="Deskripsi">
+      <input id="hargaBarang" placeholder="Harga, contoh: Rp. 25.000">
+      <div class="admin-actions">
+        <button class="btn-save" onclick="simpanBarang()">Simpan</button>
+        <button class="btn-close" onclick="resetForm()">Bersihkan</button>
+        <button class="btn-close" onclick="tutupAdmin()">Tutup</button>
+      </div>
+      <div id="adminList" class="admin-list"></div>
+    </div>
+  </div>
+</div>
+<main class="container">
+<div class="search-box"><input id="searchInput" type="text" placeholder="🔍 Cari..." onkeyup="cari()"></div>
+<section class="category"><div class="category-title">DAFTAR OLI MOTOR</div>
+<div id="itemList" class="item-list"></div></section>
+<a class="back" href="index.html">← Kembali</a>
+</main>
+<script>
+const PIN_ADMIN = "223445"; // Ganti PIN ini sebelum dipublikasikan.
+let editIndex = -1;
+
+const defaultBarang = [
+ {nama:"Pertamina Enduro Matic S 10W/30 0.8L",desc:"Oli mesin motor matic",harga:"Rp. -"},
+ {nama:"Pertamina Gear Matic 120ml",desc:"Oli gardan matic",harga:"Rp. -"},
+ {nama:"TOP 1 SMO Evolution Matic 10W-40",desc:"Oli mesin motor matic",harga:"Rp. -"},
+ {nama:"TOP 1 MC Power Booster",desc:"Perawatan dan perlindungan mesin",harga:"Rp. -"}
+];
+
+function getBarang(){
+  try {
+    const data=JSON.parse(localStorage.getItem("oli_barang"));
+    return Array.isArray(data) ? data : defaultBarang;
+  } catch(e){ return defaultBarang; }
+}
+function setBarang(data){ localStorage.setItem("oli_barang",JSON.stringify(data)); }
+
+function renderBarang(){
+  const list=document.getElementById("itemList");
+  const data=getBarang();
+  list.innerHTML=data.map((b,i)=>`
+    <div class="item searchable">
+      <div><div class="name">${esc(b.nama)}</div><div class="desc">${esc(b.desc)}</div></div>
+      <div class="price">${esc(b.harga)}</div>
+    </div>`).join("");
+  renderAdminList();
+  cari();
+}
+function esc(v){
+  return String(v??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[m]));
+}
+function cari(){
+  const f=document.getElementById('searchInput').value.toLowerCase();
+  document.querySelectorAll('.searchable').forEach(x=>x.style.display=x.innerText.toLowerCase().includes(f)?'flex':'none');
+}
+function bukaAdmin(){
+  document.getElementById("adminPanel").style.display="flex";
+  document.getElementById("pinInput").value="";
+  document.getElementById("loginBox").style.display="block";
+  document.getElementById("formBox").style.display="none";
+  setTimeout(()=>document.getElementById("pinInput").focus(),50);
+}
+function tutupAdmin(){document.getElementById("adminPanel").style.display="none";}
+function loginAdmin(){
+  if(document.getElementById("pinInput").value===PIN_ADMIN){
+    document.getElementById("loginBox").style.display="none";
+    document.getElementById("formBox").style.display="block";
+    renderAdminList();
+  } else {
+    alert("PIN salah.");
+    document.getElementById("pinInput").select();
+  }
+}
+function resetForm(){
+  editIndex=-1;
+  document.getElementById("namaBarang").value="";
+  document.getElementById("descBarang").value="";
+  document.getElementById("hargaBarang").value="";
+}
+function simpanBarang(){
+  const nama=document.getElementById("namaBarang").value.trim();
+  const desc=document.getElementById("descBarang").value.trim();
+  const harga=document.getElementById("hargaBarang").value.trim() || "Rp. -";
+  if(!nama){alert("Nama barang wajib diisi.");return;}
+  const data=getBarang();
+  const obj={nama,desc,harga};
+  if(editIndex<0) data.push(obj); else data[editIndex]=obj;
+  setBarang(data); resetForm(); renderBarang();
+}
+function editBarang(i){
+  const b=getBarang()[i]; editIndex=i;
+  document.getElementById("namaBarang").value=b.nama;
+  document.getElementById("descBarang").value=b.desc;
+  document.getElementById("hargaBarang").value=b.harga;
+}
+function hapusBarang(i){
+  if(!confirm("Hapus barang ini?")) return;
+  const data=getBarang(); data.splice(i,1); setBarang(data); renderBarang(); resetForm();
+}
+function renderAdminList(){
+  const box=document.getElementById("adminList");
+  if(!box || document.getElementById("formBox").style.display==="none") return;
+  box.innerHTML=getBarang().map((b,i)=>`
+    <div class="admin-row">
+      <span>${esc(b.nama)}</span>
+      <span><button onclick="editBarang(${i})">Edit</button>
+      <button class="btn-danger" onclick="hapusBarang(${i})">Hapus</button></span>
+    </div>`).join("");
+}
+document.getElementById("adminPanel").addEventListener("click",e=>{
+  if(e.target.id==="adminPanel") tutupAdmin();
+});
+renderBarang();
+</script>
+</body></html>
